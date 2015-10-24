@@ -38,9 +38,9 @@ var bio = {
 	name: "Benjamin Dirgo",
 	role: "Software Engineer",
 	contacts: {
-		email: "<a href='mailto:bdirgo@gmail.com'>bdirgo@gmail.com</a>",
-		github: "<a href='https://github.com/bdirgo'>bdirgo</a>",
-		twitter: "<a href='https://twitter.com/bdirgo'>@bdirgo</a>",
+		email: "bdirgo@gmail.com",
+		github: "bdirgo",
+		twitter: "@bdirgo",
 		location: "Phoenix, AZ"
 	},
 	profileURL: "images/361b955.jpg",
@@ -83,9 +83,12 @@ bio.display = function () {
 	$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 	$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 	$("#header").prepend(HTMLbioPic.replace("%data%", bio.profileURL));
-	$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-	$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-	$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+	var formattedEmail = "<a href='mailto:bdirgo@gmail.com'>" + bio.contacts.email + "</a>";
+	$("#topContacts").append(HTMLemail.replace("%data%", formattedEmail));
+	var formattedTwitter = "<a href='https://twitter.com/bdirgo'>" + bio.contacts.twitter + "</a>";
+	$("#topContacts").append(HTMLtwitter.replace("%data%", formattedTwitter));
+	var formattedGithub = "<a href='https://github.com/bdirgo'>" + bio.contacts.github + "</a>";
+	$("#topContacts").append(HTMLgithub.replace("%data%", formattedGithub));
 	var formattedLocation = "<a href='#mapDiv'>" + bio.contacts.location + "</a>";
 	$("#topContacts").append(HTMLlocation.replace("%data%", formattedLocation));
 	if (bio.skills.length > 0) {
@@ -129,7 +132,7 @@ projects.display = function () {
 	}
 }
 
-education.schools.display = function () {
+education.display = function () {
 	for (var index = 0; index < education.schools.length; index++) {
 		$("#education").append(HTMLschoolStart);
 		var formattedName = HTMLschoolName.replace("%data%", education.schools[index].name);
@@ -146,9 +149,6 @@ education.schools.display = function () {
 			$(".education-entry:last").append(formattedMajor);
 		};
 	};
-}
-
-education.nanodegree.display = function () {
 	for (var index = education.nanodegree.length - 1; index >= 0; index--) {
 		$("#education").append(HTMLonlineClasses);
 		$("#education").append(HTMLschoolStart);
@@ -164,7 +164,7 @@ bio.display();
 work.display();
 projects.display();
 education.schools.display();
-education.nanodegree.display();
+education.display();
 $("#mapDiv").append(googleMap);
 
 
