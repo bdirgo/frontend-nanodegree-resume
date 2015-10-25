@@ -83,14 +83,10 @@ bio.display = function () {
 	$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 	$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 	$("#header").prepend(HTMLbioPic.replace("%data%", bio.profileURL));
-	var formattedEmail = "<a href='mailto:bdirgo@gmail.com'>" + bio.contacts.email + "</a>";
-	$("#topContacts").append(HTMLemail.replace("%data%", formattedEmail));
-	var formattedTwitter = "<a href='https://twitter.com/bdirgo'>" + bio.contacts.twitter + "</a>";
-	$("#topContacts").append(HTMLtwitter.replace("%data%", formattedTwitter));
-	var formattedGithub = "<a href='https://github.com/bdirgo'>" + bio.contacts.github + "</a>";
-	$("#topContacts").append(HTMLgithub.replace("%data%", formattedGithub));
-	var formattedLocation = "<a href='#mapDiv'>" + bio.contacts.location + "</a>";
-	$("#topContacts").append(HTMLlocation.replace("%data%", formattedLocation));
+	$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+	$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+	$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+	$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
 		for (var i = bio.skills.length - 1; i >= 0; i--) {
@@ -101,7 +97,7 @@ bio.display = function () {
 	$("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
 	$("#footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
 	$("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-	$("#footerContacts").append(HTMLlocation.replace("%data%", formattedLocation));
+	$("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 
 }
 
@@ -163,7 +159,6 @@ education.display = function () {
 bio.display();
 work.display();
 projects.display();
-education.schools.display();
 education.display();
 $("#mapDiv").append(googleMap);
 
